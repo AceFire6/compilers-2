@@ -21,6 +21,7 @@ def gen_ula_code(ast):
     elif ast[0] == 'SubExpression':
         return builder.fsub(gen_ula_code(ast[1]), gen_ula_code(ast[2]))
     elif ast[0] == 'MulExpression':
+        print(ast[2])
         return builder.fmul(gen_ula_code(ast[1]), gen_ula_code(ast[2]))
     elif ast[0] == 'DivExpression':
         return builder.fdiv(gen_ula_code(ast[1]), gen_ula_code(ast[2]))
@@ -30,6 +31,11 @@ def gen_ula_code(ast):
     elif ast[0] == 'IdentifierExpression':
         return builder.load(var_dict[ast[1][0].replace('ID,', '')])
 
+
+def gen_and_get_module(ast):
+    gen_ula_code(ast)
+    builder.ret(builder.load(var_dict[last_var]))
+    return module
 
 float_literal = ir.FloatType()
 function = ir.FunctionType(float_literal, ())
@@ -55,6 +61,6 @@ if __name__ == '__main__':
         builder.ret(builder.load(var_dict[last_var]))
 
         print(module)
-        with open(ula_file.replace('.ula', '.ir'), 'w') as out_file:
+        with open(ula_file.replace('.ula', '_ex.ir'), 'w') as out_file:
             print(module, file=out_file)
 

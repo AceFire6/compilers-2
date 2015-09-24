@@ -5,9 +5,9 @@ _tabversion = '3.5'
 
 _lr_method = 'LALR'
 
-_lr_signature = '0040FD42D1A0D429E4D125C07EF397A5'
+_lr_signature = 'CA44493CAB2B66F74C30A8AC22C27E79'
     
-_lr_action_items = {'MINUS':([7,8,9,10,11,12,19,20,21,22,23,24,25,],[13,-12,15,-13,-11,13,-14,-7,-5,-6,-9,-8,-4,]),'LPAREN':([4,6,13,14,15,16,17,18,],[6,6,6,6,6,6,6,6,]),'$end':([2,3,5,7,8,9,10,11,19,20,21,22,23,24,25,],[-2,0,-1,-3,-12,-10,-13,-11,-14,-7,-5,-6,-9,-8,-4,]),'FLOAT_LITERAL':([4,6,13,14,15,16,17,18,],[10,10,10,10,10,10,10,10,]),'TIMES':([8,9,10,11,19,20,21,22,23,24,25,],[-12,17,-13,-11,-14,17,17,17,17,17,17,]),'RPAREN':([8,9,10,11,12,19,20,21,22,23,24,25,],[-12,-10,-13,-11,19,-14,-7,-5,-6,-9,-8,-4,]),'ID':([0,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,],[1,-2,1,8,-1,8,-3,-12,-10,-13,-11,8,8,8,8,8,8,-14,-7,-5,-6,-9,-8,-4,]),'DIVIDE':([8,9,10,11,19,20,21,22,23,24,25,],[-12,16,-13,-11,-14,16,16,16,16,16,16,]),'EQUALS':([1,],[4,]),'PLUS':([7,8,9,10,11,12,19,20,21,22,23,24,25,],[14,-12,18,-13,-11,14,-14,-7,-5,-6,-9,-8,-4,]),}
+_lr_action_items = {'EQUALS':([2,],[5,]),'$end':([1,3,4,6,7,8,9,10,19,20,21,22,23,24,25,],[0,-2,-1,-10,-13,-11,-12,-3,-4,-6,-8,-9,-5,-7,-14,]),'RPAREN':([6,7,8,9,18,19,20,21,22,23,24,25,],[-10,-13,-11,-12,25,-4,-6,-8,-9,-5,-7,-14,]),'MINUS':([6,7,8,9,10,18,19,20,21,22,23,24,25,],[13,-13,-11,-12,17,17,-4,-6,-8,-9,-5,-7,-14,]),'FLOAT_LITERAL':([5,11,12,13,14,15,16,17,],[7,7,7,7,7,7,7,7,]),'PLUS':([6,7,8,9,10,18,19,20,21,22,23,24,25,],[12,-13,-11,-12,16,16,-4,-6,-8,-9,-5,-7,-14,]),'LPAREN':([5,11,12,13,14,15,16,17,],[11,11,11,11,11,11,11,11,]),'ID':([0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,],[2,2,-2,-1,9,-10,-13,-11,-12,-3,9,9,9,9,9,9,9,-4,-6,-8,-9,-5,-7,-14,]),'TIMES':([6,7,8,9,19,20,21,22,23,24,25,],[14,-13,-11,-12,14,14,-8,-9,14,14,-14,]),'DIVIDE':([6,7,8,9,19,20,21,22,23,24,25,],[15,-13,-11,-12,15,15,-8,-9,15,15,-14,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expr':([4,6,],[7,12,]),'term':([4,6,13,14,15,16,17,18,],[9,9,20,21,22,23,24,25,]),'factor':([4,6,13,14,15,16,17,18,],[11,11,11,11,11,11,11,11,]),'assign':([0,3,],[2,5,]),'program':([0,],[3,]),}
+_lr_goto_items = {'factor':([5,11,12,13,14,15,16,17,],[8,8,8,8,21,22,8,8,]),'expr':([5,11,],[10,18,]),'program':([0,],[1,]),'term':([5,11,12,13,16,17,],[6,6,19,20,23,24,]),'assign':([0,1,],[3,4,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,18 +26,18 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> program","S'",1,None,None,None),
-  ('program -> program assign','program',2,'p_program','parse_ula.py',11),
-  ('program -> assign','program',1,'p_program_assign','parse_ula.py',16),
-  ('assign -> ID EQUALS expr','assign',3,'p_assign_expr','parse_ula.py',21),
-  ('expr -> term PLUS term','expr',3,'p_expr_plus','parse_ula.py',26),
-  ('expr -> expr PLUS term','expr',3,'p_expr_plus','parse_ula.py',27),
-  ('expr -> term MINUS term','expr',3,'p_expr_minus','parse_ula.py',32),
-  ('expr -> expr MINUS term','expr',3,'p_expr_minus','parse_ula.py',33),
-  ('term -> term TIMES term','term',3,'p_term_mul','parse_ula.py',38),
-  ('term -> term DIVIDE term','term',3,'p_term_div','parse_ula.py',43),
-  ('expr -> term','expr',1,'p_expr_term','parse_ula.py',48),
-  ('term -> factor','term',1,'p_term_factor','parse_ula.py',53),
-  ('factor -> ID','factor',1,'p_factor_id','parse_ula.py',58),
-  ('factor -> FLOAT_LITERAL','factor',1,'p_factor','parse_ula.py',63),
-  ('factor -> LPAREN expr RPAREN','factor',3,'p_factor_expr','parse_ula.py',68),
+  ('program -> program assign','program',2,'p_program','parse_ula.py',10),
+  ('program -> assign','program',1,'p_program_assign','parse_ula.py',15),
+  ('assign -> ID EQUALS expr','assign',3,'p_assign_expr','parse_ula.py',20),
+  ('expr -> term PLUS term','expr',3,'p_expr_plus','parse_ula.py',25),
+  ('expr -> expr PLUS term','expr',3,'p_expr_plus','parse_ula.py',26),
+  ('expr -> term MINUS term','expr',3,'p_expr_minus','parse_ula.py',31),
+  ('expr -> expr MINUS term','expr',3,'p_expr_minus','parse_ula.py',32),
+  ('term -> term TIMES factor','term',3,'p_term_mul','parse_ula.py',37),
+  ('term -> term DIVIDE factor','term',3,'p_term_div','parse_ula.py',42),
+  ('expr -> term','expr',1,'p_expr_term','parse_ula.py',47),
+  ('term -> factor','term',1,'p_term_factor','parse_ula.py',52),
+  ('factor -> ID','factor',1,'p_factor_id','parse_ula.py',57),
+  ('factor -> FLOAT_LITERAL','factor',1,'p_factor','parse_ula.py',62),
+  ('factor -> LPAREN expr RPAREN','factor',3,'p_factor_expr','parse_ula.py',67),
 ]

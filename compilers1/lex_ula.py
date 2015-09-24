@@ -53,7 +53,7 @@ def t_COMMENT(t):
 
 # Error handling rule
 def t_error(t):
-    lexer.error = True
+    lexer.l_error = True
     t.lexer.skip(1)
 
 
@@ -78,7 +78,7 @@ def lex_file(file_name):
                 open_file.write('%s,%s\n' % (token.type, token.value))
 
 lexer = lex.lex()
-lexer.error = True
+lexer.l_error = False
 
 if __name__ == '__main__':
     ula_file = sys.argv[-1]

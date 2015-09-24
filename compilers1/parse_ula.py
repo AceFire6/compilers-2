@@ -34,12 +34,12 @@ def p_expr_minus(p):
 
 
 def p_term_mul(p):
-    """term : term TIMES term"""
+    """term : term TIMES factor"""
     p[0] = ('MulExpression', p[1], p[3])
 
 
 def p_term_div(p):
-    """term : term DIVIDE term"""
+    """term : term DIVIDE factor"""
     p[0] = ('DivExpression', p[1], p[3])
 
 
@@ -70,7 +70,7 @@ def p_factor_expr(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    parser.error = True
+    parser.p_error = True
 
 
 # Recursively prints the AST
@@ -87,7 +87,7 @@ def print_ast(ast, depth):
 
 # Build the parser
 parser = yacc.yacc()
-parser.error = False
+parser.p_error = False
 
 if __name__ == '__main__':
 

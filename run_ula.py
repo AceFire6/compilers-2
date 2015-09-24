@@ -7,6 +7,8 @@
 import sys
 from ctypes import CFUNCTYPE, c_float
 
+from ir_ula import gen_and_get_module, parser
+
 import llvmlite.binding as llvm
 
 
@@ -44,8 +46,10 @@ if __name__ == '__main__':
         with open(ula_file) as open_file:
             in_data = open_file.read()
 
+        module = gen_and_get_module(parser.parse(in_data))
+
         engine = create_execution_engine()
-        mod = compile_ir(engine, in_data)
+        mod = compile_ir(engine, str(module))
 
         # Look up the function pointer (a Python int)
         func_ptr = engine.get_function_address('main')
@@ -56,5 +60,5 @@ if __name__ == '__main__':
         res = cfunc()
 
         print(res)
-        with open(ula_file.replace('.ir', '.run'), 'w') as out_file:
+        with open(ula_file.replace('.ula', '.run'), 'w') as out_file:
             print(res, file=out_file)
