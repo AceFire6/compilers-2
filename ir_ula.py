@@ -61,6 +61,6 @@ if __name__ == '__main__':
         builder.ret(builder.load(var_dict[last_var]))
 
         print(module)
-        with open(ula_file.replace('.ula', '_ex.ir'), 'w') as out_file:
+        with open(ula_file.replace('.ula', '.ir'), 'w') as out_file:
             print(module, file=out_file)
 
